@@ -29,7 +29,7 @@ void ugu(int id, Third & t) {
     std::cout << "hello from " << id << ", function with parameter Third " << t.v <<'\n';
 }
 
-int main(int argc, char **argv) {
+int main(int, char **) {
     ctpl::thread_pool p(2 /* two threads in the pool */);
 
     std::future<void> qw = p.push(std::ref(first));  // function
@@ -111,7 +111,7 @@ int main(int argc, char **argv) {
     }
 
     // get thread 0
-    auto & th = p.get_thread(0);
+    [[maybe_unused]] auto & th = p.get_thread(0);
 
     return 0;
 }
